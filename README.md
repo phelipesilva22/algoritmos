@@ -2,7 +2,7 @@
 
  - Bem-vindo ao repositório de Algoritmos! Este repositório foi criado para organizar e compartilhar arquivos e códigos desenvolvidos durante meus estudos no curso de Algoritmos do canal Curso em Vídeo e nos exercícios realizados na faculdade SPTECH.
 
- - ![image](https://github.com/user-attachments/assets/3bdf47de-fba7-401b-bab3-023957538dc1)
+   ![image](https://github.com/user-attachments/assets/3bdf47de-fba7-401b-bab3-023957538dc1)
 
 
 # --- Estrutura do Repositório --- 📁
