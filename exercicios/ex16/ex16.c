@@ -14,6 +14,7 @@ int main()
 {
     // --- Declaração das variáveis ---
     unsigned short int qtdCigarrosFumados, anosCigarroFumado;
+    float reducaoTempoVida;
 
     printf("Quantos cigarros você fuma por dia? ");
     scanf("%hu", &qtdCigarrosFumados);
@@ -21,7 +22,8 @@ int main()
     printf("Quantos anos você fuma? ");
     scanf("%hu", &anosCigarroFumado);
 
-    
+    reducaoTempoVida = (anosCigarroFumado * 365 * 10 * qtdCigarrosFumados) / 1440;
+    printf("Redução do tempo de vida: %.2f dias!\n", reducaoTempoVida);
 
     return 0;
 } // end main
