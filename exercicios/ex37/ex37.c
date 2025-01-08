@@ -16,7 +16,7 @@
     - menos de 20 anos de empresa: +3%
     - de 20 até 30 anos de empresa: +13%
     - mais de 30 anos de empresa: +25%
-    Dia do programa: 07/01/2025
+    Dia do programa: 08/01/2025
 */
 // --- Função Principal ---
 int main()
