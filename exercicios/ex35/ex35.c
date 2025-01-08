@@ -22,10 +22,49 @@
 int main()
 {
     // --- Declaração das variáveis ---
-    
+    char tipoCarro;
+    unsigned short diasAlugados;
+    float distKM, precoFinal;
+
     puts("------------------ EMPRESA ALUGACAR ------------------");
 
-    printf("")
+    printf("Qual é o tipo de carro? (P/L) ");
+    scanf(" %c", &tipoCarro);
 
+    printf("Quantos dias de aluguel? ");
+    scanf("%hu", &diasAlugados);
+
+    printf("Quantos KM foram percorridos? ");
+    scanf("%f", &distKM);
+
+    if (tipoCarro == 'p' || tipoCarro == 'P')
+    {
+        puts("Carro Popular!");
+        if (distKM <= 100)
+        {
+            precoFinal = (diasAlugados * 90) + (distKM * 0.20);
+            printf("Preço total: R$%.2f!\n", precoFinal);
+        }
+        else 
+        {
+            precoFinal = (diasAlugados * 90) + (distKM * 0.10);
+            printf("Preço total: R$%.2f!\n", precoFinal);
+        }
+    } else if (tipoCarro == 'l' || tipoCarro == 'L')
+    {
+        puts("Carro de Luxo!");
+        if (distKM <= 200)
+        {
+            precoFinal = (diasAlugados * 150) + (distKM * 0.30);
+            printf("Preço total: R$%.2f!\n", precoFinal);
+        }
+        else
+        {
+            precoFinal = (diasAlugados * 150) + (distKM * 0.25);
+            printf("Preço total: R$%.2f!\n", precoFinal);
+        }
+    } else {
+        puts("OPÇÃO DE CARRO INVÁLIDA!");
+    }
     return 0;
 } // end main
