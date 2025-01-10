@@ -7,7 +7,6 @@
     450 + 400 + 350 + 300 + ... + 50 + 0
     Dia do programa: 08/01/2025
 */
-
 // --- Função Principal ---
 int main()
 {
