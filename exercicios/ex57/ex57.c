@@ -16,7 +16,7 @@ int main()
     // --- Declaração das variáveis ---
     char res, sexo;
     unsigned short cont = 1;
-    float salario;
+    float salario, totSalarioHomens = 0.0, totSalarioMulheres = 0.0;
 
     puts("-------------- SALÁRIO DOS FUNCIONÁRIOS --------------");
 
@@ -26,10 +26,20 @@ int main()
         printf("Valor do salário: R$");
         scanf("%f", &salario);
 
-        printf("Sexo: (M/F)");
-        scanf(" %c", &sexo);
-        sexo = tolower(sexo);
-
+        do
+        {
+            printf("Sexo: (M/F) ");
+            scanf(" %c", &sexo);
+            sexo = tolower(sexo);
+            
+            if (sexo != 'm' && sexo != 'f')
+                puts("ERRO! SEXO DIGITADO INCORRETAMENTE!");
+        } while (sexo != 'm' && sexo != 'f');
+        
+        if (sexo == 'm')
+            totSalarioHomens += salario;
+        else if (sexo == 'f')
+            totSalarioMulheres += salario;
 
         puts("Deseja continuar? ");
         puts("(s) | (n)");
@@ -37,9 +47,12 @@ int main()
         scanf(" %c", &res);
         res = tolower(res);
 
+        puts("--------------------------------------------");
         cont++;
     } while (res != 'n');
     
+    printf("Total de salários dos homens: %.2f!\n", totSalarioHomens);
+    printf("Total de salários das mulheres: %.2f!\n", totSalarioMulheres);
 
     return 0;
 } // end main
