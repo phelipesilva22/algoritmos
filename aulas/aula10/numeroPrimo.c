@@ -23,19 +23,14 @@ int main()
     {   
         cont++;
 
-        if (num % cont == 0 && num % 1 == 0)
+        if (num % cont == 0)
             totDivisiveis++;    
     } while (cont <= num);
     
-    if (num == 1)
-        printf("O número %d NÃO É PRIMO!\n", num);
-    else if (totDivisiveis == 2)
+    if (totDivisiveis == 2)
         printf("O número %d É PRIMO!\n", num);
     else
         printf("O número %d NÃO É PRIMO!\n", num);
-
-
-    
 
     return 0;
 } // end main
