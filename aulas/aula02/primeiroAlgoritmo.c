@@ -9,7 +9,6 @@ int main()
 
     puts("--------- PRIMEIRO ALGORITMO ---------");
 
-
     printf("%s\n", messageWelcome);
     printf("Me livrei da maldição!\n");
     return 0;
