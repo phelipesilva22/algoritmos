@@ -32,4 +32,4 @@ void parOuImpar(int n)
         printf("O número %d é PAR!\n", n);
     else
         printf("O número %d é ÍMPAR!\n", n);
-}
+} // end parOuImpar

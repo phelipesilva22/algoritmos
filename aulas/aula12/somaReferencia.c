@@ -36,5 +36,4 @@ void soma(int *a, int *b)
     *a += 10;
     *b += 50;
     printf("%d + %d = %d!\n", *a, *b, *a + *b);
-
 } // end soma
