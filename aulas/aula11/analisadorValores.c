@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 /*
-
+    --- CURSO DE ALGORITMOS - AULA 11: ESTRUTURAS DE REPETIÇÃO (3) ---
     Autor: Phelipe Bruione da Silva
     Objetivo do programa: Fazer um programa que mostre um analisador de valores, dando a seguintes informações:
     - Soma dos valores
