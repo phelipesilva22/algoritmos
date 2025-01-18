@@ -9,13 +9,13 @@
     contendo apenas os dados das pessoas menores de idade.
     Dia do programa: 17/01/2025
 */
-#define TAM 4
+#define TAM 9
 // --- Função Principal ---
 int main()
 {
     // --- Declaração das variáveis ---
-    char nome[50];
-    unsigned short idade[TAM];
+    char nome[TAM][50], menor[50];
+    unsigned short idade[TAM], idadeMenor = 0;
 
     puts("------------------- MENORES DE IDADE -------------------");
 
@@ -23,14 +23,27 @@ int main()
     {
         printf("PESSOA %d\n", i + 1);
         printf("Digite o nome: ");
-        fgets(nome, sizeof(nome), stdin);
-        nome[strcspn(nome, "\n")] = '\0';
+        fgets(nome[i], sizeof(nome), stdin);
+        nome[i][strcspn(nome[i], "\n")] = '\0';
 
-        printf("Idade de %s: ", nome);
-        scanf("%hu", &idade);
+        printf("Idade de %s: ", nome[i]);
+        scanf("%hu", &idade[i]);
         puts("--------------------------------------------");
         getchar();
-    }
 
+    }
+        
+    puts("LISTAGEM DOS MENORES");
+    for (int i = 0; i < TAM; i++)
+    {
+        if (idade[i] < 18)
+        {
+            strcpy(menor, nome[i]);
+            idadeMenor = idade[i];
+            printf("%s com %hu anos!\n", menor, idadeMenor);    
+        }
+    }
+    puts("--------------------------------------------");
+    
     return 0;
 } // end main
