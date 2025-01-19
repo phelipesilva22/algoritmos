@@ -24,11 +24,16 @@ int main()
     printf("Informe o expoente (e): ");
     scanf("%d", &expoente);
 
+    printf("O resultado de %d^%d = %d!\n", base, expoente, potencia(base, expoente));
+
     return 0;
 } // end main
 
 // --- Desenvolvimento da Função ---
 int potencia(int b, int e)
 {
-    
+    int pot = 1;
+    for (int i = 0; i < e; i++)
+        pot *= b;
+    return pot;
 } // end potencia
