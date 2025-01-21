@@ -8,7 +8,7 @@
     Objetivo do programa: Fazer um programa que mostre apenas nomes que começa com a letra escolhida pelo usuário
     Dia do programa: 20/01/2025
 */
-#define TAM 3
+#define TAM 10
 // --- Função Principal ---
 int main()
 {
@@ -38,7 +38,7 @@ int main()
         printf("Digite seu nome: ");
         fgets(nome, sizeof(nome), stdin);
         nome[strcspn(nome, "\n")] = '\0';
-        nome[i] = toupper(nome[i]);
+        nome[0] = toupper(nome[0]);
         puts("----------------------------------------");
     
         if (nome[0] == letra)
