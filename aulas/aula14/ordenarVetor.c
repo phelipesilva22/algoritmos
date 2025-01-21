@@ -7,7 +7,7 @@
     Objetivo do programa: Fazer um programa que faça a ordenação de um vetor
     Dia do programa: 20/01/2025
 */
-#define TAM 7
+#define TAM 4
 // --- Função Principal ---
 int main()
 {
@@ -20,9 +20,8 @@ int main()
     for (int i = 0; i < TAM; i++)
     {
         vetor[i] = rand() % 10;
-        printf("[%d] ", vetor[i]);
+        printf("Vetor[%d] = %d\n", i + 1, vetor[i]);
     }
-    putchar('\n');
 
     for (int i = 0; i < TAM; i++)
     {
