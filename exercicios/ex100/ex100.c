@@ -48,7 +48,7 @@ int main()
         resMedia = Media(nota1, nota2);
 
         printf("\nA média final é: %.1f!\n", resMedia);
-        for (int i = 0; i < strlen(nome); i++)
+        for (long unsigned int i = 0; i < strlen(nome); i++)
             nome[i] = toupper(nome[i]);
         
         if (sexo == 'f' && resMedia < 5)
