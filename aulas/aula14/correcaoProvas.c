@@ -7,7 +7,7 @@
     Objetivo do programa: Fazer um programa que leia um gabarito de uma prova ler as respostas do aluno, Ao final, mostre os acertos dos alunos e a média da turma
     Dia do programa: 21/01/2025
 */
-#define TAM 2
+#define TAM 3
 char gab[5];
 char res[5];
 // --- Protótipo das Funções ---
@@ -18,7 +18,8 @@ int main()
 {
     // --- Declaração das variáveis --- 
     char nome[TAM][50];
-    unsigned short somaNota = 0, nota[TAM];
+    unsigned short somaNota, somaNotaMedia = 0, nota[TAM];
+    float mediaTurma;
 
     cadastroGabarito();
     system("clear");
@@ -33,25 +34,28 @@ int main()
         nome[i][strcspn(nome[i], "\n")] = '\0';
         cadastroRespostas();
         system("clear");
+
+        somaNota = 0;
+        for (int j = 0; j < 5; j++)
+        {
+            if (gab[j] == res[j])
+            {
+                somaNota += 2;
+            }
+        }
+        somaNotaMedia += somaNota;
+        nota[i] = somaNota;
     }
 
-    for (int i = 0; i < 5; i++)
-    {
-         if (gab[i] == res[i])
-         {
-            somaNota += 2;
-            for (int i = 0; i < TAM; i++)
-                nota[i] = somaNota;
-         }
-    }
-
-
+    mediaTurma = (float)somaNotaMedia / TAM;
     puts("NOTAS FINAIS");
     puts("------------------------");
     for (int i = 0; i < TAM; i++)
     {
-        printf("%s %hu.0!\n", nome[i], nota[i]);
+        printf("%-10s %hu.0\n", nome[i], nota[i]);
     }
+    puts("------------------------");
+    printf("Média da turma: %.1f\n", mediaTurma);
 
     return 0;
 } // end main
