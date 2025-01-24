@@ -12,42 +12,32 @@ char gab[5];
 char res[5];
 // --- Protótipo das Funções ---
 void cadastroGabarito();
-void cadastroRespostas();
+int cadastroRespostas();
 // --- Função Principal ---
 int main()
 {
     // --- Declaração das variáveis --- 
     char nome[TAM][50];
-    unsigned short somaNota, somaNotaMedia = 0, nota[TAM];
+    unsigned short somaNota = 0, nota[TAM];
     float mediaTurma;
 
     cadastroGabarito();
-    system("clear");
 
     for (int i = 0; i < TAM; i++)
     {
+        system("clear");
         puts("------------------------");
         printf("ALUNO %d\n", i + 1);
         puts("------------------------");
         printf("Nome: ");
         fgets(nome[i], sizeof(nome), stdin);
         nome[i][strcspn(nome[i], "\n")] = '\0';
-        cadastroRespostas();
-        system("clear");
-
-        somaNota = 0;
-        for (int j = 0; j < 5; j++)
-        {
-            if (gab[j] == res[j])
-            {
-                somaNota += 2;
-            }
-        }
-        somaNotaMedia += somaNota;
-        nota[i] = somaNota;
+        nota[i] = cadastroRespostas();
+        somaNota += nota[i];
     }
 
-    mediaTurma = (float)somaNotaMedia / TAM;
+    mediaTurma = (float)somaNota / TAM;
+    system("clear");
     puts("NOTAS FINAIS");
     puts("------------------------");
     for (int i = 0; i < TAM; i++)
@@ -75,13 +65,17 @@ void cadastroGabarito()
     }
 } // end cadastroGabarito
 
-void cadastroRespostas()
+int cadastroRespostas()
 {  
+    unsigned short notaFinal = 0;
     puts("RESPOSTAS DADAS");
     for (int i = 0; i < 5; i++)
     {
         printf("Questão %d: ", i + 1);
         scanf(" %c", &res[i]);
         getchar();
+        if (gab[i] == res[i])
+            notaFinal += 2;
     }
+    return notaFinal;
 } // end cadastroRespostas
