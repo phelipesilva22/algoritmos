@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include <time.h>
+#include <unistd.h>
 /*
     Autor: Phelipe Bruione da Silva
     Objetivo do programa: Fazer um programa que mostre uma sala de cinema e realizar a reservar de uma cadeira
@@ -21,15 +21,16 @@ int main()
 
     do
     {
-        mostrarFileirasCinema();
         do
         {
+            mostrarFileirasCinema();
             printf("Reservar a cadeira: B");
             scanf("%hu", &escolhaCadeira);
             if (escolhaCadeira > 10)
             {
                 puts("LUGAR NÃO EXISTE\n");
-                sleep(500);
+                sleep(1);
+                system("clear");
             }
         } while (escolhaCadeira > 10);
         
@@ -47,8 +48,7 @@ int main()
         res = tolower(res);
         system("clear");
     } while (res != 'n');
-    puts("FIM DAS RESERVAS!");
-
+    puts("--- FIM DAS RESERVAS ---");
 
     return 0;
 } // end main
@@ -59,7 +59,7 @@ void mostrarFileirasCinema()
     for (int i = 0; i < TAM; i++)
     {
        if (cadeiras[i] == 0)
-            printf("[B%d]", i + 1);
+            printf("[B%d] ", i + 1);
         else
             printf("[---]");
     }
