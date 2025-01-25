@@ -12,9 +12,9 @@
 int main()
 {
     // --- Declaração das variáveis ---
-    int mat[TAM][TAM];
+    int mat[TAM][TAM], totPar = 0;
 
-    puts("------------------- PREENCHER MATRIZ -------------------");  
+    puts("------------------- MATRIZ PARES -------------------");  
     
     srand(time(NULL));
     for (int i = 0; i < TAM; i++)
@@ -32,14 +32,17 @@ int main()
         for (int j = 0; j < TAM; j++)
         {
             if (mat[i][j] % 2 == 0)
+            {
                 printf(" [%d] ", mat[i][j]);
+                totPar++;
+            }
             else
                 printf(" %d ", mat[i][j]);
         }
         putchar('\n');
     }
     puts("--------------------");
-    
+    printf("Total de pares: %d!\n", totPar);
     
     return 0;
 } // end main
