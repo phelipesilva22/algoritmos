@@ -19,7 +19,7 @@ int main()
     {
         for (int j = 0; j < 2; j++)
         {
-            printf("Digite o valor [%d][%d]: ", i + 1, j + 1);
+            printf("Digite o valor na posição [%d,%d]: ", i + 1, j + 1);
             scanf("%d", &mat[i][j]);
         }
     }
