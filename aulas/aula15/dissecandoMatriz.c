@@ -1,6 +1,7 @@
 // --- Bibliotecas Iniciais ---
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 /*
     Autor: Phelipe Bruione da Silva
     Objetivo do programa: Fazer um programa que leia uma matriz 4x4 e mostre
@@ -11,19 +12,47 @@
     Dia do programa: 25/01/2025
 */
 #define TAM 4
+// --- Variáveis Globais ---
+int matriz[TAM][TAM], flagMatriz = 0;
 // --- Protótipo da Funções ---
 void menu();
+void gerarMatriz();
+void mostrarMatriz();
+void mostrarDiagonalPrincipal(int mat[TAM][TAM]);
 // --- Função Principal ---
 int main()
 {
     // --- Declaração das variáveis ---
-    int matriz[TAM][TAM], op;
+    unsigned short op;
 
     do
     {
         menu();
-        scanf("%d", &op);
+        scanf("%hu", &op);
+
         system("clear");
+        /* srand(time(NULL)); */
+        switch (op)
+        {
+        case 1:
+            if (!flagMatriz)
+            {
+               gerarMatriz();
+                flagMatriz = 1;
+            }
+            mostrarMatriz();
+            break;
+        case 2: 
+            mostrarDiagonalPrincipal(matriz);
+            break;
+
+        case 5:
+            puts("ENCERRANDO...");
+            break;
+        default:
+            puts("OPÇÃO INVÁLIDA!!");
+            break;
+        }
     } while (op != 5);
     
     
@@ -41,5 +70,40 @@ void menu()
     puts("[3] Triângulo Superior");
     puts("[4] Triângulo Inferior");
     puts("[5] Sair");
-    printf("==== OPÇÃO: ");
+    puts("==== OPÇÃO: ");
 } // end menu
+
+void gerarMatriz()
+{
+    for (int i = 0; i < TAM; i++)
+    {
+        for (int j = 0; j < TAM; j++)
+        {
+            matriz[i][j] = rand() % 20 + 1;
+        }
+    }
+} // end gerarMatriz
+
+void mostrarMatriz()
+{
+    for (int i = 0; i < TAM; i++)
+    {
+        for (int j = 0; j < TAM; j++)
+        {
+            printf(" %3d ", matriz[i][j]);
+        }
+        putchar('\n');
+    }
+} // end gerarMatriz
+
+void mostrarDiagonalPrincipal(int mat[TAM][TAM])
+{
+    for (int i = 0; i < TAM; i++)
+    {
+        printf("%4d  \n", mat[i][i]);
+        for (int j = 0; j < TAM; j++)
+        {
+            printf("  "); 
+        }
+    }
+} // end mostrarDiagonalPrincipal
