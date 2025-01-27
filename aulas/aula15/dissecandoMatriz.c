@@ -19,6 +19,8 @@ void menu();
 void gerarMatriz();
 void mostrarMatriz();
 void mostrarDiagonalPrincipal(int mat[TAM][TAM]);
+void mostrarTrianguloSuperior(int mat[TAM][TAM]);
+void mostrarTrianguloInferior(int mat[TAM][TAM]);
 // --- Função Principal ---
 int main()
 {
@@ -45,7 +47,12 @@ int main()
         case 2: 
             mostrarDiagonalPrincipal(matriz);
             break;
-
+        case 3:
+            mostrarTrianguloSuperior(matriz);
+            break;
+        case 4:
+            mostrarTrianguloInferior(matriz);
+            break;
         case 5:
             puts("ENCERRANDO...");
             break;
@@ -100,10 +107,10 @@ void mostrarDiagonalPrincipal(int mat[TAM][TAM])
 {
     for (int i = 0; i < TAM; i++)
     {
-        printf("%4d  \n", mat[i][i]);
-        for (int j = 0; j < TAM; j++)
+        for (int j = 0; j < i; j++)
         {
-            printf("  "); 
+            printf("    ");
         }
+        printf("%4d\n", mat[i][i]);
     }
 } // end mostrarDiagonalPrincipal
