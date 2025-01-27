@@ -117,15 +117,22 @@ void mostrarDiagonalPrincipal(int mat[TAM][TAM])
 
 void mostrarTrianguloSuperior(int mat[TAM][TAM])
 {
-    for (int i = 1; i < TAM; i++)
+    for (int i = 0; i < TAM - 1; i++)
     {
-        printf(" %3d \n", mat[i][i]);
-        for (int j = i + 1; j < TAM - 1; j++)
+        printf("    ");
+        for (int j = i + 1; j < TAM ; j++)
         {
-            printf("    ");
+            printf(" %2d ", mat[i][j]);
+            printf("  ");
         }
-
+        
+        putchar('\n');
+        for (int t = 0; t < i; t++)
+        {
+            printf("        ");
+        }
     }
+    putchar('\n');
 } // end mostrarTrianguloSuperior
 
 /* void mostrarTrianguloInferior(int mat[TAM][TAM])
