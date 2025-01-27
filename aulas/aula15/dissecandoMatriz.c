@@ -51,7 +51,7 @@ int main()
             mostrarTrianguloSuperior(matriz);
             break;
         case 4:
-            mostrarTrianguloInferior(matriz);
+            // mostrarTrianguloInferior(matriz);
             break;
         case 5:
             puts("ENCERRANDO...");
@@ -114,3 +114,21 @@ void mostrarDiagonalPrincipal(int mat[TAM][TAM])
         printf("%4d\n", mat[i][i]);
     }
 } // end mostrarDiagonalPrincipal
+
+void mostrarTrianguloSuperior(int mat[TAM][TAM])
+{
+    for (int i = 1; i < TAM; i++)
+    {
+        printf(" %3d \n", mat[i][i]);
+        for (int j = i + 1; j < TAM - 1; j++)
+        {
+            printf("    ");
+        }
+
+    }
+} // end mostrarTrianguloSuperior
+
+/* void mostrarTrianguloInferior(int mat[TAM][TAM])
+{
+
+} // end mostrarTrianguloInferior */
