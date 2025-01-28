@@ -119,17 +119,20 @@ void mostrarTrianguloSuperior(int mat[TAM][TAM])
 {
     for (int i = 0; i < TAM - 1; i++)
     {
-        printf("    ");
-        for (int j = i + 1; j < TAM ; j++)
+        for (int j = i + 1; j < TAM; j++)
         {
-            printf(" %2d ", mat[i][j]);
-            printf("  ");
+             if (i == 1)
+             {
+                printf("            %d     %d", mat[1][j], mat[1][j + 1]);
+
+             }
+                printf(" %5d ", mat[i][j]);   
+            
         }
-        
         putchar('\n');
         for (int t = 0; t < i; t++)
         {
-            printf("        ");
+            printf("              ");
         }
     }
     putchar('\n');
