@@ -32,16 +32,18 @@ int main()
         menu();
         scanf("%hu", &op);
 
+
         system("clear");
         /* srand(time(NULL)); */
         switch (op)
         {
         case 1:
-            if (!flagMatriz)
+            gerarMatriz();
+            /* if (!flagMatriz)
             {
                gerarMatriz();
-                flagMatriz = 1;
-            }
+               flagMatriz = 1;
+            } */
             mostrarMatriz();
             break;
         case 2: 
@@ -51,7 +53,7 @@ int main()
             mostrarTrianguloSuperior(matriz);
             break;
         case 4:
-            // mostrarTrianguloInferior(matriz);
+            mostrarTrianguloInferior(matriz);
             break;
         case 5:
             puts("ENCERRANDO...");
@@ -124,8 +126,9 @@ void mostrarTrianguloSuperior(int mat[TAM][TAM])
              if (i == 1)
              {
                 printf("            %d     %d", mat[1][j], mat[1][j + 1]);
-
+                break;
              }
+             else
                 printf(" %5d ", mat[i][j]);   
             
         }
@@ -138,7 +141,15 @@ void mostrarTrianguloSuperior(int mat[TAM][TAM])
     putchar('\n');
 } // end mostrarTrianguloSuperior
 
-/* void mostrarTrianguloInferior(int mat[TAM][TAM])
+void mostrarTrianguloInferior(int mat[TAM][TAM])
 {
-
-} // end mostrarTrianguloInferior */
+    for (int l = 1; l < TAM; l++)
+    {
+        putchar('\n');
+        for (int c = 0; c <= l - 1; c++)
+        {
+            printf(" %4d ", mat[l][c]);
+        }
+    }
+    putchar('\n');
+} // end mostrarTrianguloInferior
