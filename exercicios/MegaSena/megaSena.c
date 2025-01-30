@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <unistd.h>
+#include <locale.h>
 #include <ctype.h>
 #include <string.h>
 /*
@@ -14,24 +14,25 @@
     - 4 NÚMEROS ACERTADOS (QUADRA)
     Dia do programa: 29/01/2025
 */
-float valor = 635000000;
 #define TAM 6
 // --- Protótipo das Funções ---
-void ganharQuadra(char n[50]);
-/* void ganharQuina();
-void ganharSena ()*/;
+void ganharQuadra(char n[50], float v);
+void ganharQuina(char n[50], float v);
+void ganharSena (char n[50], float v); 
 // --- Função Principal ---
 int main()
 {
     // --- Declaração das variáveis ---
     char nome[50], res;
     unsigned short numerosSorteados[TAM], numerosApostados[TAM], totAcertos = 0;
+    float valor = 635000000;
     
+    setlocale(LC_NUMERIC, "pt_BR.UTF-8");
     srand(time(NULL));
 
     do
     {
-        puts("----------------- MEGA DA VIRADA (R$635 MILHÕES) -----------------");
+        puts("----------------- MEGA DA VIRADA (R$635 MILHOẼS) -----------------");
         printf("Nome do jogador: ");
         fgets(nome, sizeof(nome), stdin);
         nome[strcspn(nome, "\n")] = '\0';
@@ -51,17 +52,17 @@ int main()
                 }
             }
         
-        puts("----------------------------------------------------------");
-        puts("NÚMEROS APOSTADOS                 NÚMEROS SORTEADOS       ");
+        puts("---------------------------------------------------------------");
+        puts("    NÚMEROS APOSTADOS               NÚMEROS SORTEADOS       ");
         for (int i = 0; i < TAM; i++)
-            printf("[%hu] ", numerosApostados[i]);
+            printf(" [%hu] ", numerosApostados[i]);
 
-        printf("                         ");
+        printf("        ");
         for (int j = 0; j < TAM; j++)
         {
-            numerosSorteados[j] = rand() % 2 + 1;
+            numerosSorteados[j] = rand() % 60 + 1;
             
-            printf("[%hu ]", numerosSorteados[j]);
+            printf("[%hu] ", numerosSorteados[j]);
 
             if (numerosApostados[j] == numerosSorteados[j])
                 totAcertos++;
@@ -70,28 +71,23 @@ int main()
         switch (totAcertos)
         {
         case 4:
-            ganharQuadra(nome);
+            ganharQuadra(nome, valor);
             break;
 
         case 5:
-            /* ganharQuina(); */
+            ganharQuina(nome, valor);
             break;
         
         case 6:
-            /* ganharSena(); */
+            ganharSena(nome, valor);
             break;
 
         default:
-            puts("INFELIZMENTE, NÃO GANHOU NADA!");
+            puts("\nINFELIZMENTE, NÃO GANHOU NADA!");
             break;
         }
-
-
-
-        putchar('\n');
         printf("Acertos de %s: %hu!\n", nome, totAcertos);
-        puts("----------------------------------------------------------");
-
+        puts("---------------------------------------------------------------");
 
         printf("Quer continuar? [S/N] ");
         scanf(" %c", &res);
@@ -105,8 +101,20 @@ int main()
 } // end main
 
 // --- Desenvolvimento das Funções ---
-void ganharQuadra(char n[50])
+void ganharQuadra(char n[50], float v)
 {
-    valor -= (valor * 0.25);
-    printf("%s ganhou R$%.2f!\n", n, valor);
+    v -= (v * 0.85);
+    printf("\n%s ganhou R$ %'.2f\n", n, v);
 } // end ganharQuadra
+
+
+void ganharQuina(char n[50], float v)
+{
+    v -= (v * 0.45);
+    printf("\n%s ganhou R$ %'.2f\n", n, v);
+} // end ganharQuina
+
+void ganharSena(char n[50], float v)
+{
+    printf("\n%s ganhou R$ %'.2f\n", n, v);
+} // end ganharSena
