@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "aulas"
+		},
+		{
+			"path": "exercicios"
+		},
+		{
+			"path": "../../familyProgram"
+		},
+		{
+			"path": "sptech"
+		},
+		{
+			"path": "listaDeExercicios"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"stdio.h": "c"
+		}
+	}
+}
