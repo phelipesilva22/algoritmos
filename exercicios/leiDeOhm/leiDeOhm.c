@@ -4,7 +4,7 @@
 #include <ctype.h>
 /*
     Autor: Phelipe Bruione da Silva
-    Objetivo do programa: Fazer um programa que realize a 1º e a 2º LEI DE OHM
+    Objetivo do programa: Fazer um programa que realize a 1º e 2º LEI DE OHM, além de realizar cálculo de potência
     Dia do programa: 30/01/2025
 */
 // --- Variáveis Globais ---
@@ -12,11 +12,21 @@ float corrente, tensao, resistencia;
 // --- Protótipo das Funções ---
 void menu();
 void menuPrimeiraLeiDeOhm();
+void menuPotencia();
 void linha();
+
+void lerCorrente();
+void lerTensao();
+void lerResistencia();
+
 float calcularCorrente(float U, float R);
 float calcularTensao(float I, float R);
 float calcularResistencia(float I, float U);
 float calcularResistenciaEletrica(float p, float L, float A);
+
+float calcular1FormulaPotencia(float R, float I);
+float calcular2FormulaPotencia(float U, float R);
+float calcular3FormulaPotencia(float U, float I);
 // --- Função Principal ---
 int main()
 {
@@ -41,23 +51,17 @@ int main()
             {
             case 1:
                 linha();
-                printf("Valor da resistência (OHMS): ");
-                scanf("%f", &resistencia);
-                
-                printf("Valor da tensão (V): ");
-                scanf("%f", &tensao);
-
+                lerResistencia();
+                lerTensao();                
+               
                 printf("A corrente será de %.5fA!\n", calcularCorrente(tensao, resistencia));
                 linha();
                 break;
             
             case 2:
                 linha();
-                printf("Valor da corrente (A): ");
-                scanf("%f", &corrente);
-
-                printf("Valor da resistência (OHMS): ");
-                scanf("%f", &resistencia);
+                lerCorrente();
+                lerResistencia();
 
                 printf("A tensão será de %.2fV!\n", calcularTensao(corrente, resistencia));
                 linha();
@@ -65,11 +69,8 @@ int main()
 
             case 3:
                 linha();
-                printf("Valor da corrente (A): ");
-                scanf("%f", &corrente);
-
-                printf("Valor da tensão (V): ");
-                scanf("%f", &tensao);
+                lerCorrente();
+                lerTensao();
 
                 printf("A resistência será de %.2f OHMS!\n", calcularResistencia(corrente, tensao));
                 linha();
@@ -95,6 +96,39 @@ int main()
 
             linha();
             printf("A resistência elétrica será de %.2f OHMS!\n", calcularResistenciaEletrica(resistividade, comprimento, areaTransversal));
+            break;
+
+        case 3:
+            menuPotencia();
+            scanf("%hu", &opt);
+
+            if (opt == 1)
+            {
+                linha();
+                lerCorrente();
+                lerResistencia();
+                printf("A potência elétrica será de %.2fW!\n", calcular1FormulaPotencia(resistencia, corrente));
+                linha();
+            } else if (opt == 2)
+            {
+                linha();
+                lerTensao();
+                lerResistencia();
+                printf("A potência elétrica será de %.2fW!\n", calcular2FormulaPotencia(tensao, resistencia));
+                linha();
+            } else if (opt == 3)
+            {
+                linha();
+                lerTensao();
+                lerCorrente();
+                printf("A potência elétrica será de %.2fW!\n", calcular3FormulaPotencia(tensao, corrente));
+                linha();
+            } else
+            {
+                puts("OPÇÃO INVÁLIDA!!!!");
+            }
+
+
             break;
 
         default:
@@ -131,10 +165,37 @@ void menuPrimeiraLeiDeOhm()
     printf("O que você deseja calcular? ");
 } // end menuPrimeiraLeiDeOhm
 
+void menuPotencia()
+{
+    puts("------------------ POTÊNCIA ELÉTRICA ------------------");
+    puts("[1] - 1ª FÓRMULA");
+    puts("[2] - 2ª FÓRMULA");
+    puts("[3] - 3ª FÓRMULA");
+    printf("Selecione a fórmula da potência desejada: ");
+} // end menuPotencia
+
 void linha()
 {
     puts("------------------------------------------------");
 } // end linha
+
+void lerCorrente()
+{
+    printf("Valor da corrente (A): ");
+    scanf("%f", &corrente);
+} // end lerCorrente
+
+void lerTensao()
+{
+    printf("Valor da tensão (V): ");
+    scanf("%f", &tensao);
+} // end lerTensao
+
+void lerResistencia()
+{
+    printf("Valor da resistência (OHMS): ");
+    scanf("%f", &resistencia);
+} // end lerResistencia
 
 float calcularCorrente(float U, float R)
 {
@@ -155,3 +216,18 @@ float calcularResistenciaEletrica(float p, float L, float A)
 {
     return p * L / A;
 } // end calcularResistenciaEletrica
+
+float calcular1FormulaPotencia(float R, float I)
+{
+    return R * (I * I);
+} // end calcular1FormulaPotencia
+
+float calcular2FormulaPotencia(float U, float R)
+{
+    return (U * U) / R;
+} // end calcular2FormulaPotencia
+
+float calcular3FormulaPotencia(float U, float I)
+{
+    return U * I;
+} // end calcular3FormulaPotencia
