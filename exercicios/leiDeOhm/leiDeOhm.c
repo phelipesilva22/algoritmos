@@ -12,6 +12,7 @@ float corrente, tensao, resistencia;
 // --- Protótipo das Funções ---
 void menu();
 void menuPrimeiraLeiDeOhm();
+void linha();
 float calcularCorrente(float U, float R);
 float calcularTensao(float I, float R);
 float calcularResistencia(float I, float U);
@@ -23,11 +24,10 @@ int main()
     unsigned short opcao, opt;
 
     do
-    {
-        puts("------------------ LEI DE OHM ------------------");
-        
+    {        
         menu();
         scanf("%hu", &opcao);
+        system("clear");
 
         switch (opcao)
         {
@@ -38,20 +38,45 @@ int main()
             switch (opt)
             {
             case 1:
+                linha();
+                printf("Valor da resistência (OHMS): ");
+                scanf("%f", &resistencia);
+                
                 printf("Valor da tensão (V): ");
                 scanf("%f", &tensao);
+
+                printf("A corrente será de %.5fA!\n", calcularCorrente(tensao, resistencia));
+                linha();
+                break;
+            
+            case 2:
+                linha();
+                printf("Valor da corrente (A): ");
+                scanf("%f", &corrente);
 
                 printf("Valor da resistência (OHMS): ");
                 scanf("%f", &resistencia);
 
-                printf("A corrente será de %.2f!\n", calcularCorrente(tensao, resistencia));
+                printf("A tensão será de %.2fV!\n", calcularTensao(corrente, resistencia));
+                linha();
                 break;
-            
-            default:
-                
+
+            case 3:
+                linha();
+                printf("Valor da corrente (A): ");
+                scanf("%f", &corrente);
+
+                printf("Valor da tensão (V): ");
+                scanf("%f", &tensao);
+
+                printf("A resistência será de %.2f OHMS!\n", calcularResistencia(corrente, tensao));
+                linha();
+                break;
+
+            default:    
+                puts("OPÇÃO INVÁLIDA!!");
                 break;
             }
-
             break;
         
         default:
@@ -64,24 +89,46 @@ int main()
         res = tolower(res);
         system("clear");
     } while (res != 'n');
-    
+    puts("--- FINALIZANDO O PROGRAMA ---");
+
     return 0;
 } // end main
 
 // --- Desenvolvimento das Funções ---
 void menu()
 {
-    puts("[1] - LEI DE OHM");
-    puts("[2] - LEI DE OHM");
+    puts("------------------ LEI DE OHM ------------------");
+    puts("[1] - 1ª LEI DE OHM");
+    puts("[2] - 2ª LEI DE OHM");
     puts("[3] - POTÊNCIA ELÉTRICA");
     printf("Escolha sua opção: ");
 } // end menu
 
 void menuPrimeiraLeiDeOhm()
 {
+    puts("------------------ LEI DE OHM ------------------");
     puts("[1] - CORRENTE");
     puts("[2] - TENSÃO");
     puts("[3] - RESISTẼNCIA");
     printf("O que você deseja calcular? ");
 } // end menuPrimeiraLeiDeOhm
 
+void linha()
+{
+    puts("------------------------------------------------");
+} // end linha
+
+float calcularCorrente(float U, float R)
+{
+    return U / R;
+} // end calcularCorrente
+
+float calcularTensao(float I, float R)
+{
+    return I * R;
+} // end calcularTensao
+
+float calcularResistencia(float I, float U)
+{
+    return U / I;
+} // enc calcularResistencia
