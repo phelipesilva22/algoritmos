@@ -16,12 +16,14 @@ void linha();
 float calcularCorrente(float U, float R);
 float calcularTensao(float I, float R);
 float calcularResistencia(float I, float U);
+float calcularResistenciaEletrica(float p, float L, float A);
 // --- Função Principal ---
 int main()
 {
     // --- Declaração das variáveis ---
     char res;
     unsigned short opcao, opt;
+    float resistividade, comprimento, areaTransversal;
 
     do
     {        
@@ -78,7 +80,23 @@ int main()
                 break;
             }
             break;
-        
+
+        case 2:
+            puts("------------------ LEI DE OHM ------------------");
+            
+            printf("Valor da resistividade (p): ");
+            scanf("%f", &resistividade);
+
+            printf("Valor do comprimento (L): ");
+            scanf("%f", &comprimento);
+
+            printf("Valor da área transversal (A): ");
+            scanf("%f", &areaTransversal);
+
+            linha();
+            printf("A resistência elétrica será de %.2f OHMS!\n", calcularResistenciaEletrica(resistividade, comprimento, areaTransversal));
+            break;
+
         default:
             puts("OPÇÃO INVÁLIDA!!!");
             break;
@@ -132,3 +150,8 @@ float calcularResistencia(float I, float U)
 {
     return U / I;
 } // enc calcularResistencia
+
+float calcularResistenciaEletrica(float p, float L, float A)
+{
+    return p * L / A;
+} // end calcularResistenciaEletrica
