@@ -53,7 +53,7 @@ int main()
             }
         
         puts("---------------------------------------------------------------");
-        puts("    NÚMEROS APOSTADOS               NÚMEROS SORTEADOS       ");
+        puts("    NÚMEROS APOSTADOS               NÚMEROS SORTEADOS         ");
         for (int i = 0; i < TAM; i++)
             printf(" [%hu] ", numerosApostados[i]);
 
