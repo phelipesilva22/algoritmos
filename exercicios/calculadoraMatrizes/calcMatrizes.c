@@ -13,7 +13,7 @@
 unsigned short tamMatriz;
 // --- Protótipo das Funções ---
 void menuOperacoesAritmeticas();
-void leituraMatrizes(unsigned short tam, unsigned short opt);
+void leituraMatrizes(unsigned short tam, unsigned short opt, int numAle);
 void somaMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat);
 void subtracaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat);
 void multiplicacaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat);
@@ -24,6 +24,7 @@ int main()
     // --- Declaração das variáveis ---
     char res;
     unsigned short op;
+    int numAleatorio;
 
     do
     {
@@ -41,15 +42,19 @@ int main()
        
         printf("Digite o tamanho da matriz: ");
         scanf("%hu", &tamMatriz);
-        leituraMatrizes(tamMatriz, op);
 
+        printf("Digite o número aleatório de (limite): ");
+        scanf("%d", &numAleatorio);
+
+        leituraMatrizes(tamMatriz, op, numAleatorio);
+        
         printf("Deseja continuar? [S/N] ");
         scanf(" %c", &res);
         res = tolower(res);
         system("clear");
     } while (res != 'n');
 
-    puts("FINALIZANDO O PROGRAMA!");
+    puts("--- FINALIZANDO O PROGRAMA! ---");
     return 0;
 } // end main
 
@@ -64,7 +69,7 @@ void menuOperacoesAritmeticas()
     printf("Selecione a operação aritmética desejada: ");
 } // end menuOperacoesAritmeticas
 
-void leituraMatrizes(unsigned short tam, unsigned short opt)
+void leituraMatrizes(unsigned short tam, unsigned short opt, int numAle)
 {
     int mat1[tam][tam], mat2[tam][tam];
 
@@ -74,8 +79,8 @@ void leituraMatrizes(unsigned short tam, unsigned short opt)
     {
         for (int c = 0; c < tam; c++)
         {   
-            mat1[l][c] = rand() % 20 + 1;
-            mat2[l][c] = rand() % 20 + 1;
+            mat1[l][c] = rand() % numAle + 1;
+            mat2[l][c] = rand() % numAle + 1;
             printf(" %3d ", mat1[l][c]);
         }
         putchar('\n');
@@ -163,7 +168,7 @@ void divisaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short ta
 {
     float dividirMatrizes[tamMat][tamMat];
 
-    puts("---- Mat1 X Mat2 ----");
+    puts("---- Mat1 / Mat2 ----");
     for (int l = 0; l < tamMat; l++)
     {
         for (int c = 0; c < tamMat; c++)
