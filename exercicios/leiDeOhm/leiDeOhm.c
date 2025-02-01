@@ -105,8 +105,8 @@ int main()
             if (opt == 1)
             {
                 linha();
-                lerCorrente();
                 lerResistencia();
+                lerCorrente();
                 printf("A potência elétrica será de %.2fW!\n", calcular1FormulaPotencia(resistencia, corrente));
                 linha();
             } else if (opt == 2)
@@ -127,8 +127,6 @@ int main()
             {
                 puts("OPÇÃO INVÁLIDA!!!!");
             }
-
-
             break;
 
         default:
@@ -168,9 +166,9 @@ void menuPrimeiraLeiDeOhm()
 void menuPotencia()
 {
     puts("------------------ POTÊNCIA ELÉTRICA ------------------");
-    puts("[1] - 1ª FÓRMULA");
-    puts("[2] - 2ª FÓRMULA");
-    puts("[3] - 3ª FÓRMULA");
+    puts("[1] - 1ª FÓRMULA: R.I²");
+    puts("[2] - 2ª FÓRMULA: U²/R");
+    puts("[3] - 3ª FÓRMULA: U.I");
     printf("Selecione a fórmula da potência desejada: ");
 } // end menuPotencia
 
