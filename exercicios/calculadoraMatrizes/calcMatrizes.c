@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <time.h>
+#include <unistd.h>
 /*
     Autor: Phelipe Bruione da Silva
     Objetivo do programa: Fazer um programa que gere o tamanho de duas matrizes, preenchendo elas com números aleatórios. Após isso, será realizada as 4 operações aritméticas básicas, resultando em uma nova matriz com os valores calculados das duas matrizes anteriores de acordo com a operação aritmética escolhida.
@@ -25,16 +26,17 @@ int main()
 
     do
     {
-        menuOperacoesAritmeticas();
-        scanf("%hu", &op);
-
-        system("clear");
-        while (op > 4)
+        do 
         {
-            puts("OPÇÃO NÃO ENCONTRADA!! TENTE NOVAMENTE!!");
             menuOperacoesAritmeticas();
             scanf("%hu", &op);
-        }
+            if (op > 4)
+            {
+                puts("OPÇÃO NÃO ENCONTRADA!! TENTE NOVAMENTE!!");
+                sleep(1);
+                system("clear");
+            }
+        } while(op > 4);
        
         printf("Digite o tamanho da matriz: ");
         scanf("%hu", &tamMatriz);
