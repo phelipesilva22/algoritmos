@@ -12,8 +12,9 @@
 unsigned short tamMatriz;
 // --- Protótipo das Funções ---
 void menuOperacoesAritmeticas();
-void leituraMatrizes(unsigned short t, unsigned short c);
-void somaMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short t1);
+void leituraMatrizes(unsigned short tam, unsigned short opt);
+void somaMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat);
+void subtracaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat);
 // --- Função Principal ---
 int main()
 {
@@ -23,25 +24,14 @@ int main()
 
     do
     {
-    
         menuOperacoesAritmeticas();
         scanf("%hu", &op);
 
         printf("Digite o tamanho da matriz: ");
         scanf("%hu", &tamMatriz);
+        leituraMatrizes(tamMatriz, op);
 
-        switch (op)
-        {
-        case 1:
-            leituraMatrizes(tamMatriz, op);
-            break;
-        
-        default:
-            puts("OPÇÃO INVÁLIDA!!");
-            break;
-        }
- 
-        printf("Deseja continuaxr? [S/N] ");
+        printf("Deseja continuar? [S/N] ");
         scanf(" %c", &res);
         res = tolower(res);
         system("clear");
@@ -62,15 +52,15 @@ void menuOperacoesAritmeticas()
     printf("Selecione a operação aritmética desejada: ");
 } // end menuOperacoesAritmeticas
 
-void leituraMatrizes(unsigned short t, unsigned short c)
+void leituraMatrizes(unsigned short tam, unsigned short opt)
 {
-    int mat1[t][t], mat2[t][t];
+    int mat1[tam][tam], mat2[tam][tam];
 
     srand(time(NULL));
     puts("------- Mat1 -------");
-    for (int l = 0; l < t; l++)
+    for (int l = 0; l < tam; l++)
     {
-        for (int c = 0; c < t; c++)
+        for (int c = 0; c < tam; c++)
         {   
             mat1[l][c] = rand() % 20 + 1;
             mat2[l][c] = rand() % 20 + 1;
@@ -80,31 +70,56 @@ void leituraMatrizes(unsigned short t, unsigned short c)
     }
 
     puts("------- Mat2 -------");
-    for (int l = 0; l < t; l++)
+    for (int l = 0; l < tam; l++)
     {
-        for (int c = 0; c < t; c++)
+        for (int c = 0; c < tam; c++)
         {   
             printf(" %3d ", mat2[l][c]);
         }
         putchar('\n');
     }
 
-    if (c == 1)
-        somaMatrizes(mat1, mat2, t);
-
+    switch (opt)
+    {
+    case 1:
+        somaMatrizes(mat1, mat2, tam);
+        break;
+    case 2:
+        subtracaoMatrizes(mat1, mat2, tam);
+        break;
+    default:
+        puts("OPÇÃO INVÁLIDA!!");
+        break;
+    }
 } // end leituraMatrizes
 
-void somaMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short t1)
+void somaMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat)
 {
-    int somaMatrizes[t1][t1];
+    int somaMatrizes[tamMat][tamMat];
 
-    puts("--- Soma de matrizes ---");
-    for (int l = 0; l < t1; l++)
+    puts("---- Mat1 + Mat2 ----");
+    for (int l = 0; l < tamMat; l++)
     {
-        for (int c = 0; c < t1; c++)
+        for (int c = 0; c < tamMat; c++)
         {   
             somaMatrizes[l][c] = m1[l][c] + m2[l][c];
             printf(" %3d ", somaMatrizes[l][c]);
+        }
+        putchar('\n');
+    }
+} // end somaMatrizes
+
+void subtracaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat)
+{
+    int subtrairMatrizes[tamMat][tamMat];
+
+     puts("---- Mat1 - Mat2 ----");
+    for (int l = 0; l < tamMat; l++)
+    {
+        for (int c = 0; c < tamMat; c++)
+        {   
+            subtrairMatrizes[l][c] = m1[l][c] - m2[l][c];
+            printf(" %3d ", subtrairMatrizes[l][c]);
         }
         putchar('\n');
     }
