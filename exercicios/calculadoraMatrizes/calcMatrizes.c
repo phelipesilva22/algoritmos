@@ -12,7 +12,8 @@
 unsigned short tamMatriz;
 // --- Protótipo das Funções ---
 void menuOperacoesAritmeticas();
-void leituraMatrizes(unsigned short t);
+void leituraMatrizes(unsigned short t, unsigned short c);
+void somaMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short t1);
 // --- Função Principal ---
 int main()
 {
@@ -32,7 +33,7 @@ int main()
         switch (op)
         {
         case 1:
-            leituraMatrizes(tamMatriz);
+            leituraMatrizes(tamMatriz, op);
             break;
         
         default:
@@ -40,7 +41,7 @@ int main()
             break;
         }
  
-        printf("Deseja continaur? [S/N] ");
+        printf("Deseja continuaxr? [S/N] ");
         scanf(" %c", &res);
         res = tolower(res);
         system("clear");
@@ -61,7 +62,7 @@ void menuOperacoesAritmeticas()
     printf("Selecione a operação aritmética desejada: ");
 } // end menuOperacoesAritmeticas
 
-void leituraMatrizes(unsigned short t)
+void leituraMatrizes(unsigned short t, unsigned short c)
 {
     int mat1[t][t], mat2[t][t];
 
@@ -88,4 +89,23 @@ void leituraMatrizes(unsigned short t)
         putchar('\n');
     }
 
+    if (c == 1)
+        somaMatrizes(mat1, mat2, t);
+
 } // end leituraMatrizes
+
+void somaMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short t1)
+{
+    int somaMatrizes[t1][t1];
+
+    puts("--- Soma de matrizes ---");
+    for (int l = 0; l < t1; l++)
+    {
+        for (int c = 0; c < t1; c++)
+        {   
+            somaMatrizes[l][c] = m1[l][c] + m2[l][c];
+            printf(" %3d ", somaMatrizes[l][c]);
+        }
+        putchar('\n');
+    }
+} // end somaMatrizes
