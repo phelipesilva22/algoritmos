@@ -17,6 +17,7 @@ void leituraMatrizes(unsigned short tam, unsigned short opt);
 void somaMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat);
 void subtracaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat);
 void multiplicacaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat);
+void divisaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat);
 // --- Função Principal ---
 int main()
 {
@@ -101,6 +102,9 @@ void leituraMatrizes(unsigned short tam, unsigned short opt)
     case 3:
         multiplicacaoMatrizes(mat1, mat2, tam);
         break;
+    case 4:
+        divisaoMatrizes(mat1, mat2, tam);
+        break;
     default:
         puts("OPÇÃO INVÁLIDA!!");
         break;
@@ -117,7 +121,7 @@ void somaMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMa
         for (int c = 0; c < tamMat; c++)
         {   
             somaMatrizes[l][c] = m1[l][c] + m2[l][c];
-            printf(" %3d ", somaMatrizes[l][c]);
+            printf(" %5d ", somaMatrizes[l][c]);
         }
         putchar('\n');
     }
@@ -133,7 +137,7 @@ void subtracaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short 
         for (int c = 0; c < tamMat; c++)
         {   
             subtrairMatrizes[l][c] = m1[l][c] - m2[l][c];
-            printf(" %3d ", subtrairMatrizes[l][c]);
+            printf(" %5d ", subtrairMatrizes[l][c]);
         }
         putchar('\n');
     }
@@ -149,8 +153,24 @@ void multiplicacaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned sh
         for (int c = 0; c < tamMat; c++)
         {   
             multiplicarMatrizes[l][c] = m1[l][c] * m2[l][c];
-            printf(" %3d ", multiplicarMatrizes[l][c]);
+            printf(" %5d ", multiplicarMatrizes[l][c]);
         }
         putchar('\n');
     }
 } // end multiplicacaoMatrizes
+
+void divisaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat)
+{
+    float dividirMatrizes[tamMat][tamMat];
+
+    puts("---- Mat1 X Mat2 ----");
+    for (int l = 0; l < tamMat; l++)
+    {
+        for (int c = 0; c < tamMat; c++)
+        {   
+            dividirMatrizes[l][c] = (float) m1[l][c] / m2[l][c];
+            printf(" %5.2f ", dividirMatrizes[l][c]);
+        }
+        putchar('\n');
+    }
+} // end divisaoMatrizes
