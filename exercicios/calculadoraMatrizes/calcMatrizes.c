@@ -15,6 +15,7 @@ void menuOperacoesAritmeticas();
 void leituraMatrizes(unsigned short tam, unsigned short opt);
 void somaMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat);
 void subtracaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat);
+void multiplicacaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat);
 // --- Função Principal ---
 int main()
 {
@@ -27,6 +28,14 @@ int main()
         menuOperacoesAritmeticas();
         scanf("%hu", &op);
 
+        system("clear");
+        while (op > 4)
+        {
+            puts("OPÇÃO NÃO ENCONTRADA!! TENTE NOVAMENTE!!");
+            menuOperacoesAritmeticas();
+            scanf("%hu", &op);
+        }
+       
         printf("Digite o tamanho da matriz: ");
         scanf("%hu", &tamMatriz);
         leituraMatrizes(tamMatriz, op);
@@ -87,6 +96,9 @@ void leituraMatrizes(unsigned short tam, unsigned short opt)
     case 2:
         subtracaoMatrizes(mat1, mat2, tam);
         break;
+    case 3:
+        multiplicacaoMatrizes(mat1, mat2, tam);
+        break;
     default:
         puts("OPÇÃO INVÁLIDA!!");
         break;
@@ -113,7 +125,7 @@ void subtracaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short 
 {
     int subtrairMatrizes[tamMat][tamMat];
 
-     puts("---- Mat1 - Mat2 ----");
+    puts("---- Mat1 - Mat2 ----");
     for (int l = 0; l < tamMat; l++)
     {
         for (int c = 0; c < tamMat; c++)
@@ -123,4 +135,20 @@ void subtracaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short 
         }
         putchar('\n');
     }
-} // end somaMatrizes
+} // end subtracaoMatrizes
+
+void multiplicacaoMatrizes(int m1[][tamMatriz], int m2[][tamMatriz], unsigned short tamMat)
+{
+    int multiplicarMatrizes[tamMat][tamMat];
+
+    puts("---- Mat1 X Mat2 ----");
+    for (int l = 0; l < tamMat; l++)
+    {
+        for (int c = 0; c < tamMat; c++)
+        {   
+            multiplicarMatrizes[l][c] = m1[l][c] * m2[l][c];
+            printf(" %3d ", multiplicarMatrizes[l][c]);
+        }
+        putchar('\n');
+    }
+} // end multiplicacaoMatrizes
