@@ -16,7 +16,7 @@ int main()
     // --- Declaração das variáveis ---
     
     desenharJogoDaVelha(velha);
-    
+
 
     return 0;
 } // end main
@@ -24,13 +24,16 @@ int main()
 // --- Desenvolvimento das Funções ---
 void desenharJogoDaVelha(int v[TAM][TAM])
 {
+    int pos = 1;
     for (int l = 0; l < TAM; l++)
     {
         puts("+---+---+---+");
         for (int c = 0; c < TAM; c++)
         {
-            printf("| %d| ", l);
+            v[l][c] = pos++;
+            printf("|%d|  ", v[l][c]);
         }
         putchar('\n');
     }
+    puts("+---+---+---+");
 } // end desenharJogoDaVelha
