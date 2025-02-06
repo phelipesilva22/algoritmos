@@ -7,32 +7,38 @@
     Dia do programa: 28/01/2025
 */
 #define TAM 3
-int velha[TAM][TAM];
+char velha[TAM][TAM];
+int pos = 0;
 // --- Protótipo das Funções ---
-void desenharJogoDaVelha(int v[TAM][TAM]);
+void desenharJogoDaVelha(char v[TAM][TAM]);
 // --- Função Principal ---
 int main()
 {
     // --- Declaração das variáveis ---
-    
+    unsigned short jog1, jog2;
+
+
     desenharJogoDaVelha(velha);
+    printf("Vai jogar [X] em qual posição? ");
+    scanf("%hu", &jog1);
 
 
     return 0;
 } // end main
 
 // --- Desenvolvimento das Funções ---
-void desenharJogoDaVelha(int v[TAM][TAM])
+void desenharJogoDaVelha(char v[TAM][TAM])
 {
-    int pos = 1;
     for (int l = 0; l < TAM; l++)
     {
         puts("+---+---+---+");
         for (int c = 0; c < TAM; c++)
         {
-            v[l][c] = pos++;
-            printf("|%d|  ", v[l][c]);
+            v[l][c] = " ";
+            pos++;
+            printf("|  %d", pos);
         }
+        putchar('|');
         putchar('\n');
     }
     puts("+---+---+---+");
