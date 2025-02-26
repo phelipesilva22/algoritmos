@@ -11,18 +11,20 @@
     Dia do programa: 26/02/2025
 */
 // --- Variáveis Globais ---
-float celsius;
+float celsius, fahrenheit, kelvin;
 // --- Prótotipo das Funções ---
 void menuConversor();
 void linha();
 float leituraCelsius();
+float leituraFahrenheit();
+float leituraKelvin();
 // --- Função Principal ---
 int main()
 {
     // --- Declaração das variáveis ---
     char res;
     unsigned short op;
-    float C;
+    float C, F, K;
 
     do
     {
@@ -39,6 +41,20 @@ int main()
             printf("CELSIUS -> KELVIN: %.2fCº = %.1fK!\n", C, (C + 273));
             linha();
             break;
+        case 2:
+            linha();
+            F = leituraFahrenheit();
+            printf("FAHRENHEIT -> CELSIUS: %.2fF = %.1fCº!\n", F, ((F - 32) / 1.8));
+            printf("FAHRENHEIT -> KELVIN: %.2fF = %.1fK!\n", F, ((F - 32) * 5 / 9 + 273));
+            linha();
+            break;
+   
+        case 3:
+            linha();
+    
+            linha();
+            break;
+    
         default:
             puts("OPÇÃO INVÁLIDA!!");
             break;
@@ -75,3 +91,19 @@ float leituraCelsius()
 
     return celsius;
 } // end leituraCelsius
+
+float leituraFahrenheit()
+{
+    printf("Informe o valor da temperatura em F: ");
+    scanf("%f", &fahrenheit);
+
+    return fahrenheit;
+} // end leituraFahrenheit
+
+float leituraKelvin()
+{
+    printf("Informe o valor da temperatura em K: ");
+    scanf("%f", &kelvin);
+
+    return kelvin;
+} // end leituraKelvin
