@@ -37,24 +37,24 @@ int main()
         case 1:
             linha();
             C = leituraCelsius();
-            printf("CELSIUS -> FAHRENHEIT: %.2fCº = %.1fF!\n", C, (C * 1.8 + 32));
-            printf("CELSIUS -> KELVIN: %.2fCº = %.1fK!\n", C, (C + 273));
+            printf("CELSIUS -> FAHRENHEIT: %.2fCº = %.2fF!\n", C, (C * 1.8 + 32));
+            printf("CELSIUS -> KELVIN: %.2fCº = %.2fK!\n", C, (C + 273.15));
             linha();
             break;
         case 2:
             linha();
             F = leituraFahrenheit();
-            printf("FAHRENHEIT -> CELSIUS: %.2fF = %.1fCº!\n", F, ((F - 32) / 1.8));
-            printf("FAHRENHEIT -> KELVIN: %.2fF = %.1fK!\n", F, ((F - 32) * 5 / 9 + 273));
+            printf("FAHRENHEIT -> CELSIUS: %.2fF = %.2fCº!\n", F, ((F - 32) / 1.8));
+            printf("FAHRENHEIT -> KELVIN: %.2fF = %.2fK!\n", F, ((F - 32) * 5 / 9 + 273.15));
             linha();
             break;
-   
         case 3:
             linha();
-    
+            K = leituraKelvin();
+            printf("KELVIN -> CELSIUS: %.2fK = %.2fCº!\n", K, K - 273.15);
+            printf("KELVIN -> FAHRENHEIT: %.2fK = %.2fF!\n", K, ((K - 273.15) * 1.8 + 32));
             linha();
             break;
-    
         default:
             puts("OPÇÃO INVÁLIDA!!");
             break;
