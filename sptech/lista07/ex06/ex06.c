@@ -40,7 +40,7 @@ int main()
     
     puts("------------------- CALCULADORA DE CANSAÇO DO ALUNO SPTECH -------------------");
 
-    printf("Qual meio de transporte que vocẽ vai para a faculdade? ");
+    printf("Qual meio de transporte que você vai para a faculdade? ");
     fgets(lMeioTransporte, sizeof(lMeioTransporte), stdin);
     lMeioTransporte[strcspn(lMeioTransporte, "\n")] = '\0';
 
