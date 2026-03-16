@@ -4,11 +4,11 @@
 /*
     Autor: Phelipe Bruione da Silva
     Objetivo do programa: Crie um programa o qual:
-    a) Receba do usuário um número (tem que ser entre 20 e 100)
-    b) Ao clicar num botão "Adoro múltiplos de 5"...
-    c) Exiba, debaixo do botão, todos os múltiplos de 5 entre 0 e o número
-    informado em a), um embaixo do outro. Ex: 5, 10, 15, 20...
-    Dia do programa: 15/03/2026
+    a) Receba um número (tem que estar entre 0 e 200);
+    b) Ter um botão chamado "Viva o 7!"
+    c) Ao clicar nesse botão, devem aparecer todos os múltiplos de 7 entre 0 e
+    o número informado em a)
+    Dia do programa: 16/03/2026
 */
 
 // --- Função Principal ---
@@ -17,20 +17,20 @@ int main()
     // --- Declaração das variáveis ---
     unsigned short lNumero;
 
-    puts("---------------- MÚLTIPLOS DE 5 ----------------");
+    puts("----------------- MÚLTIPLOS DE 7 -----------------");
 
     printf("Digite um número: ");
     scanf("%hd", &lNumero);
 
-    if (lNumero < 20 || lNumero > 100)
+    if (lNumero > 200)
         puts("NÚMERO FORA DO INTERVALO! TENTE NOVAMENTE");
     else 
     {
         for (int i = 1; i <= lNumero; i++)
-            if (i % 5 == 0)
+            if (i % 7 == 0)
                 printf("%d ", i);
     }
-    puts("\n--- PROGRAMA FINALIZADO ---");
-    
+    puts("\n--- PROGRAMA FINALIZANDO ---");
+
     return 0;
 } // end main
